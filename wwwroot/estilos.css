@@ -1,0 +1,7 @@
+body { font-family: Arial, sans-serif; background: #fdf2ec; margin: 0; color: #4a2c1d; }
+header { background: #7a2e12; color: #fff; padding: 20px; text-align: center; }
+main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+.card h3 { margin-top: 0; }
+.preco { font-weight: bold; font-size: 1.2em; color: #7a2e12; }
