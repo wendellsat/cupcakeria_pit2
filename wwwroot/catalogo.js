@@ -22,7 +22,12 @@ async function carregarCatalogo() {
       preco.className = "preco";
       preco.textContent = "R$ " + c.preco.toFixed(2).replace(".", ",");
 
-      card.append(nome, descricao, preco);
+            const botao = document.createElement("button");
+      botao.className = "btn";
+      botao.textContent = "Adicionar ao carrinho";
+      botao.onclick = () => adicionarAoCarrinho(c);
+
+      card.append(nome, descricao, preco, botao);
       catalogo.appendChild(card);
     }
   } catch (erro) {

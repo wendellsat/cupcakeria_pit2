@@ -5,3 +5,11 @@ main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
 .card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
 .card h3 { margin-top: 0; }
 .preco { font-weight: bold; font-size: 1.2em; color: #7a2e12; }
+
+.btn { background: #7a2e12; color: #fff; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.btn:hover { background: #5c2210; }
+#carrinho { margin-top: 32px; background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+.item-carrinho { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #eee; }
+.item-carrinho span { flex: 1; }
+.item-carrinho button { cursor: pointer; }
+.total { font-size: 1.2em; font-weight: bold; text-align: right; }

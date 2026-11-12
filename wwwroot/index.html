@@ -7,12 +7,22 @@
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <header><h1>🧁 Cupcakeria</h1></header>
+  <header>
+    <h1>🧁 Cupcakeria</h1>
+    <p>🛒 Carrinho: <span id="contador-carrinho">0</span> item(ns)</p>
+  </header>
   <main>
     <h2>Nosso catálogo</h2>
     <p id="mensagem">Carregando...</p>
     <div id="catalogo" class="grid"></div>
+
+    <section id="carrinho">
+      <h2>Seu carrinho</h2>
+      <div id="itens-carrinho"></div>
+      <p class="total">Total: <span id="total-carrinho">R$ 0,00</span></p>
+    </section>
   </main>
+  <script src="carrinho.js"></script>
   <script src="catalogo.js"></script>
 </body>
 </html>
