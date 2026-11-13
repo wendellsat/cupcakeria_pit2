@@ -30,5 +30,45 @@ app.UseStaticFiles();
 // História 1: listar o catálogo
 app.MapGet("/api/cupcakes", async (LojaContext db) =>
     await db.Cupcakes.ToListAsync());
+// História 3: finalizar o pedido
+app.MapPost("/api/pedidos", async (NovoPedidoDto dto, LojaContext db) =>
+{
+    var nome = dto.NomeCliente?.Trim();
+    var endereco = dto.Endereco?.Trim();
+
+    if (string.IsNullOrWhiteSpace(nome))
+        return Results.BadRequest(new { erro = "Informe o seu nome." });
+    if (string.IsNullOrWhiteSpace(endereco))
+        return Results.BadRequest(new { erro = "Informe o endereço de entrega." });
+    if (dto.Itens is null || dto.Itens.Count == 0)
+        return Results.BadRequest(new { erro = "O carrinho está vazio." });
+
+    var pedido = new Pedido { NomeCliente = nome, Endereco = endereco };
+
+    foreach (var item in dto.Itens)
+    {
+        if (item.Quantidade <= 0)
+            return Results.BadRequest(new { erro = "Quantidade inválida." });
+
+        var cupcake = await db.Cupcakes.FindAsync(item.CupcakeId);
+        if (cupcake is null)
+            return Results.BadRequest(new { erro = $"O cupcake {item.CupcakeId} não existe." });
+
+        pedido.Itens.Add(new ItemPedido
+        {
+            CupcakeId = cupcake.Id,
+            NomeCupcake = cupcake.Nome,
+            PrecoUnitario = cupcake.Preco,
+            Quantidade = item.Quantidade
+        });
+    }
+
+    pedido.Total = pedido.Itens.Sum(i => i.PrecoUnitario * i.Quantidade);
+
+    db.Pedidos.Add(pedido);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/api/pedidos/{pedido.Id}", new { pedido.Id, pedido.Total });
+});
 
 app.Run();
