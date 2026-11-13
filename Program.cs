@@ -70,5 +70,42 @@ app.MapPost("/api/pedidos", async (NovoPedidoDto dto, LojaContext db) =>
 
     return Results.Created($"/api/pedidos/{pedido.Id}", new { pedido.Id, pedido.Total });
 });
+// História 4: administrador cadastra e edita cupcakes
+app.MapPost("/api/cupcakes", async (CupcakeDto dto, LojaContext db) =>
+{
+    var erro = Validacao.ValidarCupcake(dto);
+    if (erro is not null)
+        return Results.BadRequest(new { erro });
 
+    var cupcake = new Cupcake
+    {
+        Nome = dto.Nome!.Trim(),
+        Descricao = dto.Descricao!.Trim(),
+        Preco = dto.Preco
+    };
+
+    db.Cupcakes.Add(cupcake);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/api/cupcakes/{cupcake.Id}", cupcake);
+});
+
+app.MapPut("/api/cupcakes/{id:int}", async (int id, CupcakeDto dto, LojaContext db) =>
+{
+    var erro = Validacao.ValidarCupcake(dto);
+    if (erro is not null)
+        return Results.BadRequest(new { erro });
+
+    var cupcake = await db.Cupcakes.FindAsync(id);
+    if (cupcake is null)
+        return Results.NotFound(new { erro = "Cupcake não encontrado." });
+
+    cupcake.Nome = dto.Nome!.Trim();
+    cupcake.Descricao = dto.Descricao!.Trim();
+    cupcake.Preco = dto.Preco;
+
+    await db.SaveChangesAsync();
+
+    return Results.Ok(cupcake);
+});
 app.Run();
