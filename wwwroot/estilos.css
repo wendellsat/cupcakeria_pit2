@@ -13,3 +13,9 @@ main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
 .item-carrinho span { flex: 1; }
 .item-carrinho button { cursor: pointer; }
 .total { font-size: 1.2em; font-weight: bold; text-align: right; }
+
+#carrinho label { display: block; margin-top: 12px; font-weight: bold; }
+#carrinho input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 8px; }
+#btn-finalizar { margin-top: 16px; }
+.erro { color: #b00020; font-weight: bold; }
+.sucesso { color: #1b6e2d; font-weight: bold; }
