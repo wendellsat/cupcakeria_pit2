@@ -19,3 +19,12 @@ main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
 #btn-finalizar { margin-top: 16px; }
 .erro { color: #b00020; font-weight: bold; }
 .sucesso { color: #1b6e2d; font-weight: bold; }
+
+.painel { margin-top: 24px; background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+.painel label { display: block; margin-top: 12px; font-weight: bold; }
+.painel input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 8px; }
+.painel .btn { margin-top: 16px; margin-right: 8px; }
+.linha-admin { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #eee; }
+.linha-admin span { flex: 1; }
+.linha-admin .btn { margin: 0; }
+header a { color: #fff; }

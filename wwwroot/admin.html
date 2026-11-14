@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cupcakeria - Administração</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header>
+    <h1>🧁 Cupcakeria — Administração</h1>
+    <p><a href="index.html">Voltar à loja</a></p>
+  </header>
+  <main>
+    <section class="painel">
+      <h2 id="titulo-form">Novo cupcake</h2>
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" maxlength="80">
+      <label for="descricao">Descrição</label>
+      <input id="descricao" type="text" maxlength="200">
+      <label for="preco">Preço (R$)</label>
+      <input id="preco" type="number" step="0.01" min="0">
+      <button id="btn-salvar" class="btn">Cadastrar</button>
+      <button id="btn-cancelar" class="btn" hidden>Cancelar edição</button>
+      <p id="mensagem-admin"></p>
+    </section>
+
+    <section class="painel">
+      <h2>Cupcakes cadastrados</h2>
+      <div id="lista-admin"></div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

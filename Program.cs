@@ -108,4 +108,41 @@ app.MapPut("/api/cupcakes/{id:int}", async (int id, CupcakeDto dto, LojaContext 
 
     return Results.Ok(cupcake);
 });
+
+// História 5: administrador vê os pedidos e atualiza o status
+app.MapGet("/api/pedidos", async (LojaContext db) =>
+{
+    var pedidos = await db.Pedidos
+        .Include(p => p.Itens)
+        .OrderByDescending(p => p.Id)
+        .ToListAsync();
+
+    return pedidos.Select(p => new
+    {
+        p.Id,
+        p.NomeCliente,
+        p.Endereco,
+        p.Total,
+        p.Status,
+        p.CriadoEm,
+        Itens = p.Itens.Select(i => new { i.NomeCupcake, i.PrecoUnitario, i.Quantidade })
+    });
+});
+
+app.MapPut("/api/pedidos/{id:int}/status", async (int id, StatusDto dto, LojaContext db) =>
+{
+    var statusValidos = new[] { "Recebido", "Em preparo", "Entregue" };
+
+    if (dto.Status is null || !statusValidos.Contains(dto.Status))
+        return Results.BadRequest(new { erro = "Status inválido." });
+
+    var pedido = await db.Pedidos.FindAsync(id);
+    if (pedido is null)
+        return Results.NotFound(new { erro = "Pedido não encontrado." });
+
+    pedido.Status = dto.Status;
+    await db.SaveChangesAsync();
+
+    return Results.Ok(new { pedido.Id, pedido.Status });
+});
 app.Run();

@@ -16,3 +16,5 @@ public static class Validacao
         return null;
     }
 }
+
+public record StatusDto(string? Status);
