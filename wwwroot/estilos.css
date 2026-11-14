@@ -28,3 +28,6 @@ main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
 .linha-admin span { flex: 1; }
 .linha-admin .btn { margin: 0; }
 header a { color: #fff; }
+
+.painel h3 { margin-top: 0; }
+.painel ul { padding-left: 20px; }
