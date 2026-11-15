@@ -152,7 +152,7 @@ sequenceDiagram
     end
 ```
 
-
+**Diagrama de atividades**
 
 ```mermaid
 flowchart TD
