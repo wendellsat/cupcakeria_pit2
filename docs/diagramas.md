@@ -151,3 +151,19 @@ sequenceDiagram
         end
     end
 ```
+
+
+
+```mermaid
+flowchart TD
+    A([Início]) --> B[Cliente informa nome e endereço]
+    B --> C[Clica em Finalizar pedido]
+    C --> D{Carrinho, nome e endereço válidos na tela?}
+    D -- Não --> E[Mostra a mensagem de erro] --> B
+    D -- Sim --> F[Envia o pedido ao servidor]
+    F --> G{Servidor aceita o pedido?}
+    G -- Não --> H[Mostra o erro e mantém o carrinho] --> B
+    G -- Sim --> I[Grava o pedido com status Recebido]
+    I --> J[Mostra número e total e esvazia o carrinho]
+    J --> K([Fim])
+```
