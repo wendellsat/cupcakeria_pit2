@@ -1,5 +1,15 @@
 const CHAVE_CARRINHO = "cupcakeria-carrinho";
 
+let temporizadorAviso = null;
+
+function mostrarAviso(texto) {
+  const aviso = document.getElementById("aviso");
+  aviso.textContent = texto;
+  aviso.classList.add("visivel");
+  clearTimeout(temporizadorAviso);
+  temporizadorAviso = setTimeout(() => aviso.classList.remove("visivel"), 2000);
+}
+
 function lerCarrinho() {
   try {
     return JSON.parse(localStorage.getItem(CHAVE_CARRINHO)) || [];
