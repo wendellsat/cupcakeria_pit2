@@ -82,6 +82,10 @@ async function salvarCupcake() {
   const url = editando ? "/api/cupcakes/" + idEmEdicao : "/api/cupcakes";
   const metodo = editando ? "PUT" : "POST";
 
+  const botao = document.getElementById("btn-salvar");
+  botao.disabled = true;
+  botao.textContent = "Salvando...";
+
   try {
     const resposta = await fetch(url, {
       method: metodo,
@@ -101,6 +105,9 @@ async function salvarCupcake() {
     carregarLista();
   } catch (erro) {
     mostrarMensagem("Erro de conexão. Tente novamente.", "erro");
+  } finally {
+    botao.disabled = false;
+    botao.textContent = idEmEdicao === null ? "Cadastrar" : "Salvar alterações";
   }
 }
 

@@ -8,6 +8,7 @@ main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
 
 .btn { background: #7a2e12; color: #fff; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
 .btn:hover { background: #5c2210; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
 #carrinho { margin-top: 32px; background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
 .item-carrinho { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #eee; }
 .item-carrinho span { flex: 1; }
@@ -24,13 +25,12 @@ main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
 .painel label { display: block; margin-top: 12px; font-weight: bold; }
 .painel input { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 8px; }
 .painel .btn { margin-top: 16px; margin-right: 8px; }
+.painel h3 { margin-top: 0; }
+.painel ul { padding-left: 20px; }
 .linha-admin { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #eee; }
 .linha-admin span { flex: 1; }
 .linha-admin .btn { margin: 0; }
 header a { color: #fff; }
-
-.painel h3 { margin-top: 0; }
-.painel ul { padding-left: 20px; }
 
 .aviso { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1b6e2d; color: #fff; padding: 10px 18px; border-radius: 8px; opacity: 0; pointer-events: none; transition: opacity .2s; }
 .aviso.visivel { opacity: 1; }
