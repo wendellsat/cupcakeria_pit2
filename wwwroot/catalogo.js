@@ -22,10 +22,13 @@ async function carregarCatalogo() {
       preco.className = "preco";
       preco.textContent = "R$ " + c.preco.toFixed(2).replace(".", ",");
 
-            const botao = document.createElement("button");
+      const botao = document.createElement("button");
       botao.className = "btn";
       botao.textContent = "Adicionar ao carrinho";
-      botao.onclick = () => adicionarAoCarrinho(c);
+      botao.onclick = () => {
+        adicionarAoCarrinho(c);
+        mostrarAviso(c.nome + " adicionado ao carrinho!");
+      };
 
       card.append(nome, descricao, preco, botao);
       catalogo.appendChild(card);
