@@ -24,8 +24,8 @@
       <h3>Finalizar pedido</h3>
       <label for="nome-cliente">Seu nome</label>
       <input id="nome-cliente" type="text" maxlength="100">
-      <label for="endereco-cliente">Endereço de entrega</label>
-      <input id="endereco-cliente" type="text" maxlength="200">
+           <label for="endereco-cliente">Endereço de entrega (rua, número, bairro, cidade e CEP)</label>
+      <input id="endereco-cliente" type="text" maxlength="200" placeholder="Ex.: Rua das Flores, 123, Centro, São Paulo, 01000-000">
       <button id="btn-finalizar" class="btn">Finalizar pedido</button>
       <p id="mensagem-pedido"></p>
     </section>
@@ -35,4 +35,5 @@
   <script src="catalogo.js"></script>
   <script src="pedido.js"></script>
 </body>
+  <div id="aviso" class="aviso" role="status"></div>
 </html>
