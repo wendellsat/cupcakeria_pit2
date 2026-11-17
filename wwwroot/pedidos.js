@@ -84,7 +84,9 @@ async function mudarStatus(id, status) {
       return;
     }
 
-    carregarPedidos();
+    await carregarPedidos();
+    mensagem.className = "sucesso";
+    mensagem.textContent = "Pedido #" + id + " atualizado para " + status + ".";
   } catch (erro) {
     mensagem.className = "erro";
     mensagem.textContent = "Erro de conexão. Tente novamente.";
