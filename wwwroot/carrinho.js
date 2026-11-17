@@ -40,9 +40,11 @@ function alterarQuantidade(id, diferenca) {
   const item = itens.find(i => i.id === id);
   if (!item) return;
 
-  item.quantidade += diferenca;
-  if (item.quantidade <= 0) {
+  if (item.quantidade + diferenca <= 0) {
+    if (!confirm("Remover " + item.nome + " do carrinho?")) return;
     itens = itens.filter(i => i.id !== id);
+  } else {
+    item.quantidade += diferenca;
   }
   salvarCarrinho(itens);
 }
